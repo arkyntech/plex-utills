@@ -21,7 +21,6 @@ plexde4klibrary = (server["DE4KLIBRARY"])
 plexdelibrary = (server["DELIBRARY"])
 plexdklibrary = (server["DKLIBRARY"])
 plexnllibrary = (server["NLLIBRARY"])
-plex4ktvlibrary = (server["4KTVLIBRARY"])
 ppath = (server["PLEXPATH"])
 mpath = (server["MOUNTEDPATH"])
 pbak = (server["POSTER_BU"])
@@ -32,7 +31,6 @@ defilms = plex.library.section(plexdelibrary)
 dkfilms = plex.library.section(plexdklibrary)
 nlfilms = plex.library.section(plexnllibrary)
 de4kfilms = plex.library.section(plexdelibrary)
-tvtest = plex.library.section(plex4ktvlibrary)
 banner_4k = Image.open("4K-Template.png")
 banner_hdr = Image.open("hdr-poster.png")
 banner_4k_hdr = Image.open("4k-hdr-poster.png")
@@ -305,8 +303,6 @@ def poster_nl():
        
 for i in films.search(resolution="4k", hdr=True):
     poster_4k_hdr()
-for i in tvtest.search(resolution="4k", hdr=False):
-    poster_4k()
 for i in films.search(resolution="4k", hdr=False):
     poster_4k()
 for i in defilms.search(resolution="1080,720,480", hdr=False):
