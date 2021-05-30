@@ -301,17 +301,21 @@ def poster_nl():
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png')
 
-for i in films.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
+for i in films.search(**{"resolution": "4k", hdr: True, "addedAt>>": "70m"}):
     poster_4k_hdr()
-for i in films.search(**{"resolution": "4k", hdr: False, "addedAt>>": "28h"}):
+for i in films.search(**{"resolution": "4k", hdr: False, "addedAt>>": "70m"}):
     poster_4k()
-#for i in defilms.search(resolution="1080,720,480", hdr=False):
-#    poster_de()
-#for i in dkfilms.search(resolution="1080,720,480", hdr=False):
-#    poster_dk()
-#for i in nlfilms.search(resolution="1080,720,480", hdr=False):
-#    poster_nl()
-for i in dvfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
+for i in defilms.search(**{"resolution": ["1080", "720", "480"], hdr: False, "addedAt>>": "70m"}):
+    poster_de()
+for i in dkfilms.search("resolution": ["1080", "720", "480"], hdr: False, "addedAt>>": "70m"):
+    poster_dk()
+for i in nlfilms.search("resolution": ["1080", "720", "480"], hdr: False, "addedAt>>": "70m"):
+    poster_nl()
+for i in dvfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "70m"}):
     poster_4k_dv() 
-for i in de4kfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
+for i in dvfilms.search(**{"resolution": "4k", hdr: False, "addedAt>>": "70m"}):
+    poster_4k_dv() 
+for i in de4kfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "70m"}):
+    poster_4k_de() 
+for i in de4kfilms.search(**{"resolution": "4k", hdr: False, "addedAt>>": "70m"}):
     poster_4k_de() 
