@@ -1,6 +1,4 @@
 from pathlib import Path
-from datetime import date
-from datetime import timedelta
 from PIL import Image
 from plexapi.server import PlexServer
 import numpy as np
@@ -303,22 +301,17 @@ def poster_nl():
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png')
 
-# Get today's date
-today = date.today()
-# Yesterday date
-yesterday = today - timedelta(days = 1)
-       
-for i in films.search(resolution="4k", hdr=True, addedAt>>=yesterday):
+for i in films.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
     poster_4k_hdr()
-for i in films.search(resolution="4k", hdr=False):
+for i in films.search(**{"resolution": "4k", hdr: False, "addedAt>>": "28h"}):
     poster_4k()
-for i in defilms.search(resolution="1080,720,480", hdr=False):
-    poster_de()
-for i in dkfilms.search(resolution="1080,720,480", hdr=False):
-    poster_dk()
-for i in nlfilms.search(resolution="1080,720,480", hdr=False):
-    poster_nl()
-for i in dvfilms.search(resolution="4k", hdr=True):
+#for i in defilms.search(resolution="1080,720,480", hdr=False):
+#    poster_de()
+#for i in dkfilms.search(resolution="1080,720,480", hdr=False):
+#    poster_dk()
+#for i in nlfilms.search(resolution="1080,720,480", hdr=False):
+#    poster_nl()
+for i in dvfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
     poster_4k_dv() 
-for i in de4kfilms.search(resolution="4k", hdr=True):
+for i in de4kfilms.search(**{"resolution": "4k", hdr: True, "addedAt>>": "28h"}):
     poster_4k_de() 
