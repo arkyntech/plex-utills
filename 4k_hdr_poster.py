@@ -1,4 +1,6 @@
 from pathlib import Path
+from datetime import date
+from datetime import timedelta
 from PIL import Image
 from plexapi.server import PlexServer
 import numpy as np
@@ -9,6 +11,7 @@ import re
 import stat
 from configparser import ConfigParser
 import platform
+
 
 config_object = ConfigParser()
 config_object.read("config.ini")
@@ -300,8 +303,12 @@ def poster_nl():
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png')
 
+# Get today's date
+today = date.today()
+# Yesterday date
+yesterday = today - timedelta(days = 1)
        
-for i in films.search(resolution="4k", hdr=True):
+for i in films.search(resolution="4k", hdr=True, added_at=yesterday):
     poster_4k_hdr()
 for i in films.search(resolution="4k", hdr=False):
     poster_4k()
