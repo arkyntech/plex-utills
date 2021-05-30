@@ -308,7 +308,7 @@ today = date.today()
 # Yesterday date
 yesterday = today - timedelta(days = 1)
        
-for i in films.search(resolution="4k", hdr=True, added_at=yesterday):
+for i in films.search(resolution="4k", hdr=True, addedAT=yesterday):
     poster_4k_hdr()
 for i in films.search(resolution="4k", hdr=False):
     poster_4k()
