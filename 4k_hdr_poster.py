@@ -21,6 +21,7 @@ plextvlibrary = (server["TVLIBRARY"])
 plexdvlibrary = (server["DVLIBRARY"])
 plexde4klibrary = (server["DE4KLIBRARY"])
 plexdelibrary = (server["DELIBRARY"])
+plexdetvlibrary = (server["DETVLIBRARY"])
 plexdklibrary = (server["DKLIBRARY"])
 plexnllibrary = (server["NLLIBRARY"])
 ppath = (server["PLEXPATH"])
@@ -34,6 +35,7 @@ defilms = plex.library.section(plexdelibrary)
 dkfilms = plex.library.section(plexdklibrary)
 nlfilms = plex.library.section(plexnllibrary)
 de4kfilms = plex.library.section(plexdelibrary)
+detelevision = plex.library.section(plexdetvlibrary)
 banner_4k = Image.open("4K-Template.png")
 banner_hdr = Image.open("hdr-poster.png")
 banner_4k_hdr = Image.open("4k-hdr-poster.png")
@@ -226,23 +228,9 @@ def poster_hdr():
     
 def poster_de():   
     print(i.title + " DE Poster")
-    if platform.system() == 'Windows':
-        newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+"\\" 
-    else:
-        newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+'/'
-    backup = os.path.exists(newdir+'poster_bak.png')    
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
-    if pbak == True: 
-        if backup == True: 
-            print('Backup File Exists, Skipping...')    
-        else:
-            print('Creating a backup file')
-            dest = shutil.copyfile(filename, newdir+'poster_bak.png')
-            os.chown(newdir+'poster_bak.png', 99, 100)
-            os.chmod(newdir+'poster_bak.png', 0o0666)
-
     if img.status_code == 200:
         img.raw.decode_content = True
         with open(filename, 'wb') as f:
@@ -325,6 +313,8 @@ for i in films.search(**{"resolution": "4k", "hdr": True, "addedAt>>": "70m"}):
 for i in films.search(**{"resolution": "4k", "hdr": False, "addedAt>>": "70m"}):
     poster_4k()
 for i in defilms.search(**{"resolution": ["1080", "720", "480"], "addedAt>>": "70m"}):
+    poster_de()
+for i in detelevision.search(**{"addedAt>>": "1d"}):
     poster_de()
 for i in dkfilms.search(**{"resolution": ["1080", "720", "480"], "addedAt>>": "70m"}):
     poster_dk()
