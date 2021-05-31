@@ -172,7 +172,24 @@ def poster_4k():
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png') 
-           
+
+def poster_4ktv():   
+    print(i.title + " 4K Poster")
+    imgurl = i.posterUrl
+    img = requests.get(imgurl, stream=True)
+    filename = "poster.png"
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+
+    print('creating poster')    
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    background.paste(banner_4k, (0, 0), banner_4k)
+    background.save('poster.png')
+    i.uploadPoster(filepath="poster.png")
+    os.remove('poster.png') 
 
            
 def poster_hdr():
@@ -323,7 +340,7 @@ for i in de4kfilms.search(**{"resolution": "4k", "hdr": False, "addedAt>>": "70m
     poster_4k_de() 
 
 #for i in television.search(**{"addedAt>>": "15d"}):
-#    poster_4k()
+#    poster_4ktv()
 #all_tv_shows = plex.library.section("TV Shows - 4K").all()
 #for i in all_tv_shows:
-#    #poster_4k()
+#    #poster_4ktv()
