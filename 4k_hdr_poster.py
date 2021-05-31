@@ -338,9 +338,8 @@ for i in de4kfilms.search(**{"resolution": "4k", "hdr": True, "addedAt>>": "70m"
     poster_4k_de() 
 for i in de4kfilms.search(**{"resolution": "4k", "hdr": False, "addedAt>>": "70m"}):
     poster_4k_de() 
-
-#for i in television.search(**{"addedAt>>": "15d"}):
-#    poster_4ktv()
+for i in television.search(**{"addedAt>>": "1d"}):
+    poster_4ktv()
 #all_tv_shows = plex.library.section("TV Shows - 4K").all()
 #for i in all_tv_shows:
 #    #poster_4ktv()
