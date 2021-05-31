@@ -17,6 +17,7 @@ server = config_object["PLEXSERVER"]
 baseurl = (server["PLEX_URL"])
 token = (server["TOKEN"])
 plexlibrary = (server["FILMSLIBRARY"])
+plextvlibrary = (server["TVLIBRARY"])
 plexdvlibrary = (server["DVLIBRARY"])
 plexde4klibrary = (server["DE4KLIBRARY"])
 plexdelibrary = (server["DELIBRARY"])
@@ -27,6 +28,7 @@ mpath = (server["MOUNTEDPATH"])
 pbak = (server["POSTER_BU"])
 plex = PlexServer(baseurl, token)
 films = plex.library.section(plexlibrary)
+television = plex.library.section(plextvlibrary)
 dvfilms = plex.library.section(plexdvlibrary)
 defilms = plex.library.section(plexdelibrary)
 dkfilms = plex.library.section(plexdklibrary)
@@ -319,3 +321,9 @@ for i in de4kfilms.search(**{"resolution": "4k", "hdr": True, "addedAt>>": "70m"
     poster_4k_de() 
 for i in de4kfilms.search(**{"resolution": "4k", "hdr": False, "addedAt>>": "70m"}):
     poster_4k_de() 
+
+#for i in television.search(**{"addedAt>>": "15d"}):
+#    poster_4k()
+#all_tv_shows = plex.library.section("TV Shows - 4K").all()
+#for i in all_tv_shows:
+#    #poster_4k()
