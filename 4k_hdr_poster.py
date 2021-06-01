@@ -308,9 +308,9 @@ def poster_nl():
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png')
 
-for i in films.search(**{"4k", "hdr": True, "addedAt>>": "70m"}):
+for i in films.search(**{"hdr": True, "addedAt>>": "70m"}):
     poster_4k_hdr()
-for i in films.search(**{"4k", "hdr": False, "addedAt>>": "70m"}):
+for i in films.search(**{"hdr": False, "addedAt>>": "70m"}):
     poster_4k()
 
 for i in dvfilms.search(**{"hdr": True, "addedAt>>": "70m"}):
