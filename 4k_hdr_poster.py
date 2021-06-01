@@ -315,7 +315,39 @@ def poster_nl():
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
     os.remove('poster.png')
+    
+def poster_hi():   
+    print(i.title + " Bollywood Poster")
+    
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
 
+    print('creating poster')    
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    background.paste(banner_hi, (0, 0), banner_hi)
+    background.save('poster.png')
+    i.uploadPoster(filepath="poster.png")
+    os.remove('poster.png')
+
+def poster_asian():   
+    print(i.title + " Bollywood Poster")
+    
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+
+    print('creating poster')    
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    background.paste(banner_asian, (0, 0), banner_asian)
+    background.save('poster.png')
+    i.uploadPoster(filepath="poster.png")
+    os.remove('poster.png')
+    
 for i in films.search(**{"hdr": True, "addedAt>>": "70m"}):
     poster_4k_hdr()
 for i in films.search(**{"hdr": False, "addedAt>>": "70m"}):
