@@ -372,9 +372,6 @@ for i in dkfilms.search(**{"addedAt>>": "70m"}):
 for i in nlfilms.search(**{"addedAt>>": "70m"}):
     poster_nl()
   
-for i in .search(**{"addedAt>>": "70m"}):
-    poster_nl()
-  
 for i in bollywood.search(**{"addedAt>>": "70m"}):
     poster_hi()
 for i in bollywoodtv.search(**{"addedAt>>": "70m"}):
