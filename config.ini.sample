@@ -9,6 +9,9 @@ DELIBRARY = Movies - German
 DETVLIBRARY = TV Shows - German
 DKLIBRARY = Movies - Danish
 NLLIBRARY = Movies - Dutch
+HILIBRARY = Movies - Bollywood
+HITVLIBRARY = TV Shows - Bollywood
+ASIANLIBRARY = TV Shows - Asian
 #Use the setup helper if you don't know what to use here.
 PLEXPATH = /mnt/unionfs
 # no trailing slash.
