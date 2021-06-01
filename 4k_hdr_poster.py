@@ -24,6 +24,9 @@ plexdelibrary = (server["DELIBRARY"])
 plexdetvlibrary = (server["DETVLIBRARY"])
 plexdklibrary = (server["DKLIBRARY"])
 plexnllibrary = (server["NLLIBRARY"])
+plexbollywood = (server["HILIBRARY"])
+plexbollywoodtv = (server["HITVLIBRARY"])
+plexasian = (server["ASIANLIBRARY"])
 ppath = (server["PLEXPATH"])
 mpath = (server["MOUNTEDPATH"])
 pbak = (server["POSTER_BU"])
@@ -36,6 +39,9 @@ dkfilms = plex.library.section(plexdklibrary)
 nlfilms = plex.library.section(plexnllibrary)
 de4kfilms = plex.library.section(plexdelibrary)
 detelevision = plex.library.section(plexdetvlibrary)
+bollywood = plex.library.section(plexbollywood)
+bollywoodtv = plex.library.section(plexbollywoodtv)
+asiantv = plex.library.section(plexasian)
 banner_4k = Image.open("4K-Template.png")
 banner_hdr = Image.open("hdr-poster.png")
 banner_4k_hdr = Image.open("4k-hdr-poster.png")
@@ -44,6 +50,8 @@ banner_4k_de = Image.open("4k-de-poster.png")
 banner_de = Image.open("DE-template.png")
 banner_dk = Image.open("dk-poster.png")
 banner_nl = Image.open("nl-poster.png")
+banner_hi = Image.open("bollywood_poster.png")
+banner_asian = Image.open("asian_poster.png")
 size = (911,1367)
  
 
@@ -331,10 +339,20 @@ for i in dkfilms.search(**{"addedAt>>": "70m"}):
     poster_dk()
 for i in nlfilms.search(**{"addedAt>>": "70m"}):
     poster_nl()
-
+  
+for i in .search(**{"addedAt>>": "70m"}):
+    poster_nl()
+  
+for i in bollywood.search(**{"addedAt>>": "70m"}):
+    poster_hi()
+for i in bollywoodtv.search(**{"addedAt>>": "70m"}):
+    poster_hi()
+for i in asiantv.search(**{"addedAt>>": "70m"}):
+    poster_asian() 
+  
 for i in detelevision.search(**{"addedAt>>": "70m"}):
     poster_de()  
   
-  #all_tv_shows = plex.library.section("TV Shows - 4K").all()
+#all_tv_shows = plex.library.section("TV Shows - 4K").all()
 #for i in all_tv_shows:
 #    #poster_4ktv()
