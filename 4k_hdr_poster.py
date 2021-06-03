@@ -382,10 +382,11 @@ for i in bollywoodtv.search(**{"addedAt>>": "70m"}):
     poster_hi()
 for i in asiantv.search(**{"addedAt>>": "70m"}):
     poster_asian() 
-  
+
+for i in defilms.search(**{"addedAt>>": "70m"}):
+    poster_de()   
 for i in detelevision.search(**{"addedAt>>": "70m"}):
     poster_de()  
-  
 #all_tv_shows = plex.library.section("TV Shows - 4K").all()
 #for i in all_tv_shows:
 #    #poster_4ktv()
