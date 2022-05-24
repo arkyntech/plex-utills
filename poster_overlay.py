@@ -88,19 +88,22 @@ def get_poster():
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
-    add_banner_4k_dv()                                  
+    add_banner_4k_dv()
+    i.addLabel("Overlay")    
     os.remove('poster.png') 
 
 def poster_4k_hdr():
     print(i.title + ' 4k HDR')     
     get_poster()
-    add_banner_4k_hdr()                                  
+    add_banner_4k_hdr()    
+    i.addLabel("Overlay")     
     os.remove('poster.png')              
 
 def poster_4k():   
     print(i.title + " 4K Poster")
     get_poster()
-    add_banner4k()                                  
+    add_banner4k()        
+    i.addLabel("Overlay")     
     os.remove('poster.png')   
 
 for i in televisiondv.search(**{"label!": "Overlay"}):
