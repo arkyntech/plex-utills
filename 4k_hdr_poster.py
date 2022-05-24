@@ -60,7 +60,7 @@ def poster_4k_hdr():
 
     print('creating poster')    
     background = Image.open('poster.png')
-    background = background.resize(size,Image.ANTIALIAS)
+    background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k_hdr, (0, 0), banner_4k_hdr)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -93,7 +93,7 @@ def poster_4k_dv():
 
     print('creating poster')    
     background = Image.open('poster.png')
-    background = background.resize(size,Image.ANTIALIAS)
+    background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -126,7 +126,7 @@ def poster_4k():
 
     print('creating poster')    
     background = Image.open('poster.png')
-    background = background.resize(size,Image.ANTIALIAS)
+    background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -145,7 +145,7 @@ def poster_4ktv():
 
     print('creating poster')    
     background = Image.open('poster.png')
-    background = background.resize(size,Image.ANTIALIAS)
+    background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -164,7 +164,7 @@ def poster_4ktvdv():
 
     print('creating poster')    
     background = Image.open('poster.png')
-    background = background.resize(size,Image.ANTIALIAS)
+    background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
