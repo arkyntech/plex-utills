@@ -77,11 +77,9 @@ def get_poster():
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
       else:
-        print(Fore.RED+films.title+"cannot find the poster for this film")
-        print(Fore.RESET)
-    except FileNotFoundError:
-        print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
-        print(Fore.RESET)
+        logger.warning("4k Posters: "+films.title+ 'cannot find the poster for this film')
+    except OSError as e:
+        logger.error(e)
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
