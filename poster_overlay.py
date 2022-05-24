@@ -70,16 +70,15 @@ def get_poster():
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
-    
-    try:    
-      if img.status_code == 200:
+
+    if img.status_code == 200:
         img.raw.decode_content = True
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
-      else:
-        logger.warning("4k Posters: "+films.title+ 'cannot find the poster for this film')
-    except OSError as e:
-        logger.error(e)
+    else:
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)
+
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
