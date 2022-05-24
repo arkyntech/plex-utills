@@ -34,6 +34,7 @@ banner_4k_hdr = Image.open("4k-hdr-poster.png")
 banner_4k_dv = Image.open("4k-dv-poster.png")
 size = (911,1367)
 hdr_box = (0,611,215,720)
+chk_hdr = Image.open("img/4k-hdr-poster.png")
 
     
 def get_poster():
