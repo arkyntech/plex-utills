@@ -180,7 +180,8 @@ def poster_4ktvdv():
         img.raw.decode_content = True
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
-
+    else:
+            logger.info("4k Posters: "+i.title+" cannot find the poster for this Episode")
     print('creating poster')    
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
@@ -188,7 +189,9 @@ def poster_4ktvdv():
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
     i.addLabel("Overlay")
-    os.remove('poster.png')     
+    os.remove('poster.png')    
+
+    
     
 for i in films.search(**{"hdr": True, "label!": "Overlay"}):
     poster_4k_hdr()
