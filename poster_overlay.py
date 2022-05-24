@@ -67,20 +67,18 @@ def add_banner_4k_dv():
     i.addLabel("Overlay")     
 
 def get_poster():
-    newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+'/'
-    backup = os.path.exists(newdir+'poster_bak.png')
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
     
     try:    
-        if img.status_code == 200:
-            img.raw.decode_content = True
-            with open(filename, 'wb') as f:
-                shutil.copyfileobj(img.raw, f)
-        else:
-            print(Fore.RED+films.title+"cannot find the poster for this film")
-            print(Fore.RESET)
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+    else:
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)
 
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
