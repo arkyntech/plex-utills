@@ -35,7 +35,7 @@ films = plex.library.section(plexlibrary)
 television = plex.library.section(plextvlibrary)
 televisiondv = plex.library.section(plextvdvlibrary)
 dvfilms = plex.library.section(plexdvlibrary)
-banner_4k = Image.open("img/4K-Template.png")
+banner_4k = Image.open("4K-Template.png")
 banner_4k_hdr = Image.open("4k-hdr-poster.png")
 banner_4k_dv = Image.open("4k-dv-poster.png")
 
