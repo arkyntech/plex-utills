@@ -172,7 +172,7 @@ def poster_4ktvdv():
     i.addLabel("Overlay")
     os.remove('poster.png')     
     
-for i in films.search(**{"sort": titleSort, "hdr": True, "label!": "Overlay"}):
+for i in films.search(**{"sort"="titleSort", "hdr": True, "label!": "Overlay"}):
     poster_4k_hdr()
 #for i in films.search(**{"hdr": False, "label!": "Overlay"}):
 #    poster_4k()
