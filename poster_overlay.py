@@ -88,13 +88,13 @@ def get_poster():
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
-    add_banner4kdv()                                  
+    add_banner4k_dv()                                  
     os.remove('poster.png') 
 
 def poster_4k_hdr():
     print(i.title + ' 4k HDR')     
     get_poster()
-    add_banner4khdr()                                  
+    add_banner4k_hdr()                                  
     os.remove('poster.png')              
 
 def poster_4k():   
