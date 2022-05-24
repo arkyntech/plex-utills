@@ -50,17 +50,17 @@ def add_banner4k():
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
 
-def add_banner4khdr():
+def add_banner_4k_hdr():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
-    background.paste(banner_4khdr, (0, 0), banner_4khdr)
+    background.paste(banner_4khdr, (0, 0), banner_4k_hdr)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
     
-def add_banner4kdv():
+def add_banner_4k_dv():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
-    background.paste(banner_4kdv, (0, 0), banner_4kdv)
+    background.paste(banner_4kdv, (0, 0), banner_4k_dv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")    
 
@@ -88,13 +88,13 @@ def get_poster():
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
-    add_banner4k_dv()                                  
+    add_banner_4k_dv()                                  
     os.remove('poster.png') 
 
 def poster_4k_hdr():
     print(i.title + ' 4k HDR')     
     get_poster()
-    add_banner4k_hdr()                                  
+    add_banner_4k_hdr()                                  
     os.remove('poster.png')              
 
 def poster_4k():   
