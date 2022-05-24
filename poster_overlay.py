@@ -180,6 +180,9 @@ def poster_4ktvdv():
         img.raw.decode_content = True
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
+    else:
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)
     print('creating poster')    
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
@@ -190,6 +193,92 @@ def poster_4ktvdv():
     os.remove('poster.png')    
 
     
+def get_poster():
+    newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+'/'
+    backup = os.path.exists(newdir+'poster_bak.png')
+    imgurl = i.posterUrl
+    img = requests.get(imgurl, stream=True)
+    filename = "poster.png"
+
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+        if pbak == 'true': 
+            if backup == True: 
+                print('Backup File Exists, Skipping...')
+            else:        
+                print('Creating a backup file')
+                dest = shutil.copyfile(filename, newdir+'poster_bak.png')
+    else:
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)   
+
+def add_4k():
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    backgroundchk = background.crop(hdr_box)
+    hash0 = imagehash.average_hash(backgroundchk)
+    hash1 = imagehash.average_hash(chk_hdr)
+    cutoff= 5
+    if hash0 - hash1 < cutoff:
+        print('HDR banner exists, moving on...')
+    else:
+        background.paste(banner_4k, (0, 0), banner_4k)
+        background.save('poster.png')
+        i.uploadPoster(filepath="poster.png") 
+        i.addLabel("Overlay")           
+    
+def add_4khdr():
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    backgroundchk = background.crop(hdr_box)
+    hash0 = imagehash.average_hash(backgroundchk)
+    hash1 = imagehash.average_hash(chk_hdr)
+    cutoff= 5
+    if hash0 - hash1 < cutoff:
+        print('HDR banner exists, moving on...')
+    else:
+        background.paste(banner_4k_hdr, (0, 0), banner_4k_hdr)
+        background.save('poster.png')
+        i.uploadPoster(filepath="poster.png") 
+        i.addLabel("Overlay")        
+    
+def add_4kdv():
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.ANTIALIAS)
+    backgroundchk = background.crop(hdr_box)
+    hash0 = imagehash.average_hash(backgroundchk)
+    hash1 = imagehash.average_hash(chk_hdr)
+    cutoff= 5
+    if hash0 - hash1 < cutoff:
+        print('HDR banner exists, moving on...')
+    else:
+        background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
+        background.save('poster.png')
+        i.uploadPoster(filepath="poster.png")  
+        i.addLabel("Overlay")        
+
+def poster_4k():
+    print(i.title + ' 4k')     
+    get_poster()
+    add_banner() 
+    add_hdr()                                  
+    os.remove('poster.png') 
+
+def poster_4k_hdr():
+    print(i.title + ' 4k HDR')     
+    get_poster()
+    add_banner() 
+    add_hdr()                                  
+    os.remove('poster.png')  
+
+def poster_4k_dv():
+    print(i.title + ' 4k DV')     
+    get_poster()
+    add_banner() 
+    add_hdr()                                  
+    os.remove('poster.png')      
     
 #for i in films.search(**{"hdr": True, "label!": "Overlay"}):
 #    poster_4k_hdr()
@@ -202,4 +291,9 @@ def poster_4ktvdv():
 #for i in television.search(**{"hdr": True, "label!": "Overlay"}):
     poster_4ktvhdr()
 for i in televisiondv.search(**{"label!": "Overlay"}):
-    poster_4ktvdv()    
+    try:
+        poster_4ktvdv()    
+    except FileNotFoundError:
+            print(Fore.RED+films.title+" Error, the 4k TV DV poster for this film could not be created.")
+            print(Fore.RESET)
+            continue    
