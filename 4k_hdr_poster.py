@@ -181,7 +181,8 @@ def poster_4ktvdv():
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
     else:
-            logger.info("4k Posters: "+i.title+" cannot find the poster for this Episode")
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)
     print('creating poster')    
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
