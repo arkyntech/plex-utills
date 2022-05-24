@@ -28,7 +28,6 @@ plexdvlibrary = (server["DVLIBRARY"])
 plextvdvlibrary = (server["TVDVLIBRARY"])
 ppath = (server["PLEXPATH"])
 mpath = (server["MOUNTEDPATH"])
-pbak = str.lower((server["POSTER_BU"]))
 plex = PlexServer(baseurl, token)
 films = plex.library.section(plexlibrary)
 television = plex.library.section(plextvlibrary)
@@ -78,12 +77,6 @@ def get_poster():
         img.raw.decode_content = True
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
-        if pbak == 'true': 
-            if backup == True: 
-                print('Backup File Exists, Skipping...')
-            else:        
-                print('Creating a backup file')
-                dest = shutil.copyfile(filename, newdir+'poster_bak.png')
     else:
         print(Fore.RED+films.title+"cannot find the poster for this film")
         print(Fore.RESET)
