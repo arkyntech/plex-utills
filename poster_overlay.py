@@ -76,7 +76,7 @@ def get_poster():
         with open(filename, 'wb') as f:
             shutil.copyfileobj(img.raw, f)
     else:
-        print(cannot find the poster for this film")
+        print("cannot find the poster for this film")
 
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
