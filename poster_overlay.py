@@ -49,6 +49,7 @@ def add_banner4k():
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay") 
 
 def add_banner_4k_hdr():
     background = Image.open('poster.png')
@@ -56,13 +57,15 @@ def add_banner_4k_hdr():
     background.paste(banner_4k_hdr, (0, 0), banner_4k_hdr)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay") 
     
 def add_banner_4k_dv():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
     background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
     background.save('poster.png')
-    i.uploadPoster(filepath="poster.png")    
+    i.uploadPoster(filepath="poster.png")  
+    i.addLabel("Overlay")     
 
 def get_poster():
     newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+'/'
@@ -88,22 +91,19 @@ def get_poster():
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
-    add_banner_4k_dv()
-    i.addLabel("Overlay")    
+    add_banner_4k_dv()   
     os.remove('poster.png') 
 
 def poster_4k_hdr():
     print(i.title + ' 4k HDR')     
     get_poster()
-    add_banner_4k_hdr()    
-    i.addLabel("Overlay")     
+    add_banner_4k_hdr()       
     os.remove('poster.png')              
 
 def poster_4k():   
     print(i.title + " 4K Poster")
     get_poster()
-    add_banner4k()        
-    i.addLabel("Overlay")     
+    add_banner4k()          
     os.remove('poster.png')   
 
 for i in televisiondv.search(**{"label!": "Overlay"}):
