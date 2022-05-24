@@ -38,6 +38,7 @@ dvfilms = plex.library.section(plexdvlibrary)
 banner_4k = Image.open("4K-Template.png")
 banner_4k_hdr = Image.open("4k-hdr-poster.png")
 banner_4k_dv = Image.open("4k-dv-poster.png")
+size = (911,1367)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
