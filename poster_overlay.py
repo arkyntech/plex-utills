@@ -79,7 +79,9 @@ def get_poster():
       else:
         print(Fore.RED+films.title+"cannot find the poster for this film")
         print(Fore.RESET)
-
+    except FileNotFoundError:
+        print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
+        print(Fore.RESET)
 def poster_4k_dv():
     print(i.title + ' 4k DV')     
     get_poster()
