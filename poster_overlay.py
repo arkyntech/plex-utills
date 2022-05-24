@@ -289,10 +289,10 @@ def poster_4k_dv():
 #for i in television.search(**{"hdr": False, "label!": "Overlay"}):
 #    poster_4ktv()
 #for i in television.search(**{"hdr": True, "label!": "Overlay"}):
-    poster_4ktvhdr()
+#    poster_4ktvhdr()
 for i in televisiondv.search(**{"label!": "Overlay"}):
     try:
-        poster_4ktvdv()    
+        add_4kdv()    
     except FileNotFoundError:
             print(Fore.RED+films.title+" Error, the 4k TV DV poster for this film could not be created.")
             print(Fore.RESET)
