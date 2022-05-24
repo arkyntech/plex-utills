@@ -65,6 +65,7 @@ def poster_4k_hdr():
     background.paste(banner_4k_hdr, (0, 0), banner_4k_hdr)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
     os.remove('poster.png') 
     
 def poster_4k_dv():
@@ -97,6 +98,7 @@ def poster_4k_dv():
     background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
     os.remove('poster.png') 
 
 def poster_4k():   
@@ -129,6 +131,7 @@ def poster_4k():
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
     os.remove('poster.png') 
 
 def poster_4ktv():   
@@ -147,6 +150,7 @@ def poster_4ktv():
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
     os.remove('poster.png') 
 
 def poster_4ktvdv():   
@@ -165,17 +169,18 @@ def poster_4ktvdv():
     background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
     os.remove('poster.png')     
     
-for i in films.search(**{"hdr": True, "addedAt>>": "1d"}):
+for i in films.search(**{"hdr": True, "label!": "Overlay"}):
     poster_4k_hdr()
-for i in films.search(**{"hdr": False, "addedAt>>": "1d"}):
-    poster_4k()
-for i in dvfilms.search(**{"hdr": True, "addedAt>>": "1d"}):
-    poster_4k_dv() 
-for i in dvfilms.search(**{"hdr": False, "addedAt>>": "1d"}):
-    poster_4k_dv()
-for i in television.search(**{"addedAt>>": "1d"}):
-    poster_4ktv()
-for i in televisiondv.search(**{"addedAt>>": "3d"}):
-    poster_4ktvdv()    
+#for i in films.search(**{"hdr": False, "label!": "Overlay"}):
+#    poster_4k()
+#for i in dvfilms.search(**{"hdr": True, "label!": "Overlay"}):
+#    poster_4k_dv() 
+#for i in dvfilms.search(**{"hdr": False, "label!": "Overlay"}):
+#    poster_4k_dv()
+#for i in television.search(**{"addedAt>>": "label!": "Overlay"}):
+#    poster_4ktv()
+#for i in televisiondv.search(**{"label!": "Overlay"}):
+#    poster_4ktvdv()    
