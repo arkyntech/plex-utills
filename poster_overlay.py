@@ -110,17 +110,31 @@ for i in televisiondv.search(**{"label!": "Overlay"}):
     try:
         poster_4k_dv()
     except FileNotFoundError:
+        print(Fore.RED+films.title+" Error, the 4k DV poster for this film could not be created.")
+        print(Fore.RESET)
+        continue       
+for i in television.search(**{"hdr": False, "label!": "Overlay"}):
+    try:
+        poster_4k()
+    except FileNotFoundError:
         print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
         print(Fore.RESET)
-        continue         
-#for i in films.search(**{"hdr": True, "label!": "Overlay"}):
+        continue      
+for i in television.search(**{"hdr": True, "label!": "Overlay"}):
+    try:
+        poster_4k_hdr()
+    except FileNotFoundError:
+        print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
+        print(Fore.RESET)
+        continue              
+for i in films.search(**{"hdr": True, "label!": "Overlay"}):
     try:
         poster_4k_hdr()
     except FileNotFoundError:
         print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
         print(Fore.RESET)
         continue            
-#for i in films.search(**{"hdr": False, "label!": "Overlay"}):
+for i in films.search(**{"hdr": False, "label!": "Overlay"}):
     try:
         poster_4k()
     except FileNotFoundError:
