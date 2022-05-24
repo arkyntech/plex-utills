@@ -151,6 +151,25 @@ def poster_4ktv():
     i.uploadPoster(filepath="poster.png")
     i.addLabel("Overlay")
     os.remove('poster.png') 
+    
+def poster_4ktvhdr():   
+    print(i.title + " 4K Poster")
+    imgurl = i.posterUrl
+    img = requests.get(imgurl, stream=True)
+    filename = "poster.png"
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+
+    print('creating poster')    
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.Resampling.LANCZOS)
+    background.paste(banner_4k_hdr, (0, 0), banner_4k_hdr)
+    background.save('poster.png')
+    i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
+    os.remove('poster.png')     
 
 def poster_4ktvdv():   
     print(i.title + " 4K Poster")
@@ -177,9 +196,9 @@ def poster_4ktvdv():
 #    poster_4k()
 for i in dvfilms.search(**{"label!": "Overlay"}):
     poster_4k_dv() 
-#for i in dvfilms.search(**{"hdr": False, "label!": "Overlay"}):
-#    poster_4k_dv()
-#for i in television.search(**{"addedAt>>": "label!": "Overlay"}):
-#    poster_4ktv()
-#for i in televisiondv.search(**{"label!": "Overlay"}):
-#    poster_4ktvdv()    
+for i in television.search(**{"hdr": False, "label!": "Overlay"}):
+    poster_4ktv()
+for i in television.search(**{"hdr": True, "label!": "Overlay"}):
+    poster_4ktvhdr()
+for i in televisiondv.search(**{"label!": "Overlay"}):
+    poster_4ktvdv()    
