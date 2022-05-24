@@ -10,7 +10,6 @@ import re
 import stat
 from configparser import ConfigParser
 import platform
-import imagehash
 from colorama import Fore, Back, Style
 from requests.api import get
 from requests.models import REDIRECT_STATI
