@@ -7,6 +7,7 @@ import shutil
 import os
 import re
 import stat
+import imagehash
 from configparser import ConfigParser
 import platform
 
