@@ -176,13 +176,13 @@ def poster_4ktvdv():
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
-    #if img.status_code == 200:
-    #    img.raw.decode_content = True
-    #    with open(filename, 'wb') as f:
-    #        shutil.copyfileobj(img.raw, f)
-    #else:
-    #    print(Fore.RED+films.title+"cannot find the poster for this film")
-    #    print(Fore.RESET)
+    if img.status_code == 200:
+        img.raw.decode_content = True
+        with open(filename, 'wb') as f:
+            shutil.copyfileobj(img.raw, f)
+    else:
+        print(Fore.RED+films.title+"cannot find the poster for this film")
+        print(Fore.RESET)
     print('creating poster')    
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
@@ -205,4 +205,9 @@ def poster_4ktvdv():
 #for i in television.search(**{"hdr": True, "label!": "Overlay"}):
     poster_4ktvhdr()
 for i in televisiondv.search(**{"label!": "Overlay"}):
-    poster_4ktvdv()    
+    try:
+        poster_4ktvdv()    
+    except FileNotFoundError:
+            print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
+            print(Fore.RESET)
+            continue    
