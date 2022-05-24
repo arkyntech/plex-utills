@@ -103,7 +103,13 @@ def poster_4k():
     add_banner4k()                                  
     os.remove('poster.png')   
     
-            
+for i in films.search(**{"hdr": True, "label!": "Overlay"}):
+    try:
+        poster_4k_hdr()
+    except FileNotFoundError:
+        print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
+        print(Fore.RESET)
+        continue            
 for i in films.search(**{"hdr": False, "label!": "Overlay"}):
     try:
         poster_4k()
@@ -111,10 +117,3 @@ for i in films.search(**{"hdr": False, "label!": "Overlay"}):
         print(Fore.RED+films.title+" Error, the 4k poster for this film could not be created.")
         print(Fore.RESET)
         continue    
-for i in films.search(**{"hdr": True, "label!": "Overlay"}):
-    try:
-        poster_4k_hdr()
-    except FileNotFoundError:
-        print(Fore.RED+films.title+" Error, the 4k HDR poster for this film could not be created.")
-        print(Fore.RESET)
-        continue
