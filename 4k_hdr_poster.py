@@ -176,12 +176,13 @@ def poster_4ktvdv():
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
-    if img.status_code == 200:
-        img.raw.decode_content = True
-        with open(filename, 'wb') as f:
-            shutil.copyfileobj(img.raw, f)
-    else:
-        logger.info("4k Posters: "+i.title+" cannot find the poster for this Episode")
+    try:
+      if img.status_code == 200:
+          img.raw.decode_content = True
+          with open(filename, 'wb') as f:
+              shutil.copyfileobj(img.raw, f)
+      else:
+          logger.info("4k Posters: "+i.title+" cannot find the poster for this Series")
     print('creating poster')    
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
