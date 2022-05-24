@@ -193,15 +193,15 @@ def poster_4ktvdv():
 
     
     
-for i in films.search(**{"hdr": True, "label!": "Overlay"}):
-    poster_4k_hdr()
-for i in films.search(**{"hdr": False, "label!": "Overlay"}):
-    poster_4k()
-for i in dvfilms.search(**{"label!": "Overlay"}):
-    poster_4k_dv() 
-for i in television.search(**{"hdr": False, "label!": "Overlay"}):
-    poster_4ktv()
-for i in television.search(**{"hdr": True, "label!": "Overlay"}):
-    poster_4ktvhdr()
+#for i in films.search(**{"hdr": True, "label!": "Overlay"}):
+#    poster_4k_hdr()
+#for i in films.search(**{"hdr": False, "label!": "Overlay"}):
+#    poster_4k()
+#for i in dvfilms.search(**{"label!": "Overlay"}):
+#    poster_4k_dv() 
+#for i in television.search(**{"hdr": False, "label!": "Overlay"}):
+#    poster_4ktv()
+#for i in television.search(**{"hdr": True, "label!": "Overlay"}):
+#    poster_4ktvhdr()
 for i in televisiondv.search(**{"label!": "Overlay"}):
     poster_4ktvdv()    
