@@ -67,8 +67,6 @@ def add_banner_4k_dv():
     i.addLabel("Overlay")     
 
 def get_poster():
-    newdir = os.path.dirname(re.sub(ppath, mpath, i.media[0].parts[0].file))+'/'
-    backup = os.path.exists(newdir+'poster_bak.png')
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
