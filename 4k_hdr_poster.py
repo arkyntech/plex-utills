@@ -176,21 +176,21 @@ def poster_4ktvdv():
     imgurl = i.posterUrl
     img = requests.get(imgurl, stream=True)
     filename = "poster.png"
-    if img.status_code == 200:
-        img.raw.decode_content = True
-        with open(filename, 'wb') as f:
-            shutil.copyfileobj(img.raw, f)
-        print('creating poster')    
-        background = Image.open('poster.png')
-        background = background.resize(size,Image.Resampling.LANCZOS)
-        background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
-        background.save('poster.png')
-        i.uploadPoster(filepath="poster.png")
-        i.addLabel("Overlay")
-        os.remove('poster.png')    
-    else:
-        print(Fore.RED+films.title+"cannot find the poster for this film")
-        print(Fore.RESET)    
+    #if img.status_code == 200:
+    #    img.raw.decode_content = True
+    #    with open(filename, 'wb') as f:
+    #        shutil.copyfileobj(img.raw, f)
+    #else:
+    #    print(Fore.RED+films.title+"cannot find the poster for this film")
+    #    print(Fore.RESET)
+    print('creating poster')    
+    background = Image.open('poster.png')
+    background = background.resize(size,Image.Resampling.LANCZOS)
+    background.paste(banner_4k_dv, (0, 0), banner_4k_dv)
+    background.save('poster.png')
+    i.uploadPoster(filepath="poster.png")
+    i.addLabel("Overlay")
+    os.remove('poster.png')    
 
     
     
