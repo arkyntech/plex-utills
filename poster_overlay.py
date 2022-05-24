@@ -47,7 +47,6 @@ print(current_time, ": 4k HDR poster script starting now.")
 def add_banner4k():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
-    backgroundchk = background.crop(box)
     background.paste(banner_4k, (0, 0), banner_4k)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -55,7 +54,6 @@ def add_banner4k():
 def add_banner4khdr():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
-    backgroundchk = background.crop(box)
     background.paste(banner_4khdr, (0, 0), banner_4khdr)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")
@@ -63,7 +61,6 @@ def add_banner4khdr():
 def add_banner4kdv():
     background = Image.open('poster.png')
     background = background.resize(size,Image.Resampling.LANCZOS)
-    backgroundchk = background.crop(box)
     background.paste(banner_4kdv, (0, 0), banner_4kdv)
     background.save('poster.png')
     i.uploadPoster(filepath="poster.png")    
